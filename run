@@ -1,0 +1,109 @@
+<?php
+
+namespace App;
+
+use App\kernel\App;
+use App\kernel\Request;
+
+class  artisan
+{
+
+  public function __construct($argv)
+  {
+    $dir = __DIR__;
+
+    //  (   $argv[] la );
+    $lat =     array_key_last($argv);
+    $filename = $argv[$lat] ?? '';
+    $file = $filename ?? '';
+    $name =
+      $file ?? '';
+    if (
+      $argv[0] == 'run' and
+      $argv[1] == ''
+    ) {
+      shell_exec("php -S localhost:8080 -t public");
+    }
+    foreach ($argv as $key) {
+
+
+      if ($key == '-migrate') {
+        
+        if (in_array('down', $argv)) {
+          $uord = 'down';
+        }
+        if ($key == 'down' || $key == 'up') {
+          $func =  $key ?? '';
+        }
+        require_once __DIR__ . "/config/migration/Migration.php";
+        $migpath = __DIR__ . "/config/migration/Migration.php $uord";
+      }
+      if ($key == '-c') {
+        require_once __DIR__ . "/kernel/strings/controller/controller.php";
+        $controller =  fopen('app/controller/' . $file . '.php', 'wr', true);
+        if (
+          fwrite($controller, $fileinfo)
+
+        ) {
+          echo "
+      ****************
+      *********
+      ****
+      
+      CONTROLLER CREATED SUCCESSFULLY! 
+       
+      ****
+      *********
+      ****************\n" . PHP_EOL;
+        }
+      }
+      if ($key == 'del' and $key == '-d') {
+
+        $del = dirname(__DIR__) . "/mvc_by_me/controller/" . $file . ".php";
+        shell_exec("sudo rm $del");
+      }
+      if ($key == '-model') {
+        require_once __DIR__ . "/kernel/strings/controller/modal.php";
+
+        $controller =  fopen('app/modal/' . $file . '.php', 'wr', true);
+        if (fwrite($controller, $fileinfo)) {
+          # code...
+          echo "
+          ****************
+          *********
+          ****
+          
+          $file MODEL CREATED SUCCESSFULLY! 
+          
+          ****
+          *********
+          ****************\n" . PHP_EOL;
+        }
+      }
+      if ($key == '-migration') {
+        require_once __DIR__ . "/kernel/strings/controller/migration.php";
+
+        $controller =  fopen('database/migrations/' . ucfirst($name) . '.php', 'wr', true);
+        if (fwrite($controller, $fileinfo)) {
+          echo "
+      ****************
+      *********
+      ****
+      
+      $name MIGRATION CREATED SUCCESSFULLY! 
+       
+      ****
+      *********
+      ****************\n" . PHP_EOL;
+        }
+      }
+      if ($key == 'v') {
+        require_once __DIR__ . "/kernel/strings/controller/modal.php";
+        $controller =  fopen('view/' . $file . '.php', 'wr', true);
+        fwrite($controller, $viewInfo);
+      }
+    }
+  }
+}
+
+new artisan($argv);
