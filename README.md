@@ -4,3 +4,6 @@
 # To start the project
 run <code>php run</code> on terminal
 
+# To add migrations go to database/migrations folder and add your mysql
+and run <code>php run -migrate</code>
+it will automatically add it to your database tables
