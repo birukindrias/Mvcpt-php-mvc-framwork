@@ -14,3 +14,4 @@ $route->get('/logout', [AuthController::class, 'logOut']);
 $route->get('/profile', [Controller::class, 'profile']);
 $route->post('/profile', [Controller::class, 'profile']);
 $route->get('/home', [Controller::class, 'dashboard']);
+$route->get('/', [Controller::class, 'index']);

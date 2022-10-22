@@ -9,9 +9,9 @@ $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 $db_config = [
 
-    'DNS' => $_ENV['DNS'],
-    'USER' => $_ENV['USER'],
-    'PASS' => $_ENV['PASS'],
+    'DNS' => $_ENV['DB_DNS'],
+    'USER' => $_ENV['DB_USER'],
+    'PASS' => $_ENV['DB_PASS'],
 ];
 // echo "<pre>";   
 $app = new App($db_config);

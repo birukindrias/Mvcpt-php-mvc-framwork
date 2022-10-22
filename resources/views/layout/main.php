@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+    }
+    </style>
     <?php
     use App\config\App;
     $this->asset('css/style.css');
@@ -15,15 +22,16 @@
     {style}
 </head>
 
-<body>
+<body class=" bg-black">
 
 
-    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-900">
+    <nav class="bg-gray-700 border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-900">
         <div class="container flex flex-wrap justify-between items-center mx-auto">
             <a href="https://PWT.com/" class="flex items-center">
-                <img src="https://PWT.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="PWT Logo">
+                <img src="https://thumbs.dreamstime.com/z/website-icon-vector-design-illustration-www-flat-symbol-logo-graphic-elements-app-ui-isolated-white-background-172632728.jpg"
+                    class="mr-3  rounded-full sm:h-9" alt="PWT Logo">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-                    Telven
+                    WWW
                 </span>
             </a>
             <button data-collapse-toggle="navbar-default" type="button"
@@ -39,10 +47,10 @@
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul
-                    class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    class="flex flex-col p-4 mt-4 b bg-black rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
                         <a href="/home"
-                            class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                            class="block py-2 pr-4 pl-3 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
                             aria-current="page">Home</a>
                     </li>
                     <?php

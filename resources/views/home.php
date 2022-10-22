@@ -1,1 +1,1 @@
-<div class="grid place-content-center">wellcome to ecommerce </div>
+<div class="grid place-content-center">welcome to the small www php mvc framework</div>
