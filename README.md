@@ -1,4 +1,4 @@
-# Mvcpt-php-mvc-framwork
+# WWW-php-mvc-framwork
 
 
 ![alt mvcpt](https://github.com/birukindrias/Mvcpt-php-mvc-framwork/blob/main/storage/image.png)
