@@ -1,7 +1,7 @@
 # Mvcpt-php-mvc-framwork
 
 
-![alt mvcpt](https://github.com/birukindrias/Mvcpt-php-mvc-framwork/blob/main/storage/image.jpg)
+![alt mvcpt](https://github.com/birukindrias/Mvcpt-php-mvc-framwork/blob/main/storage/image.png)
 ![alt mvcpt](https://github.com/birukindrias/Mvcpt-php-mvc-framwork/blob/main/storage/Screenshot_20221022_094859.png)
 
 
