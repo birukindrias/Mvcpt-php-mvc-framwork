@@ -45,10 +45,11 @@ class Request
         if (isset($_FILES[$name])) {
             $errors = array();
             $file_name = $_FILES[$name]['name'];
+            var_dump($file_name);
             $file_size = $_FILES[$name]['size'];
             $file_tmp = $_FILES[$name]['tmp_name'];
             $file_type = $_FILES[$name]['type'];
-            $file_ext = strtolower(end(explode('.', $_FILES[$name]['name'])));
+            $file_ext = strtolower(end(explode('.', $file_name)));
 
             $extensions = $types;
             if ($types != []) {

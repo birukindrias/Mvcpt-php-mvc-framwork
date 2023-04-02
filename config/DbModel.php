@@ -22,6 +22,7 @@ abstract class DbModel
         }
         $stmt->execute();
         return true;
+        
     }
     public  static function get(array $keys)
     {
@@ -48,7 +49,7 @@ abstract class DbModel
         ($input_keys);
         $input_keys = array_map(fn ($key) => "$key = :$key", $array_key);
         $sql = "SELECT * FROM $table_name WHERE $input_keys";
-        $stmt = App::$app->databa->pdo->prepare($sql);
+        $stmt = App::$app->database->pdo->prepare($sql);
         foreach ($keys as $key => $value) {
             $stmt->bindValue(":$key", $value);
         }
@@ -104,6 +105,39 @@ abstract class DbModel
         };
 
         return false;
+    }
+    public  static function search(array $thisarrayok)
+    {
+        // var_dump($thisarrayok);
+        // var_dump($thisarrayok);
+
+        $table_name = static::tableName();
+        $array_key = array_keys($thisarrayok);
+        $input_keys = implode(' AND ', array_map(fn ($key) => "  $key Like :$key", $array_key));
+
+        // $input_keys = array_map(fn ($key) => "$key = :$key", $array_key);
+        $SQL_QUERY = "SELECT * FROM $table_name WHERE  $input_keys";
+        $QUERY_STMT = App::$app->database->pdo->prepare($SQL_QUERY);
+        // var_dump('QUERY_STMT');
+        // var_dump($QUERY_STMT);
+
+        foreach ($thisarrayok as $key => $value) {
+            $QUERY_STMT->bindValue(":$key", '%' . $value . '%');
+        }
+
+        $QUERY_STMT->execute();
+        // var_dump(pdo_error(App::$ap->db->pdo));
+
+        $retu = $QUERY_STMT->fetchAll(\PDO::FETCH_ASSOC);
+
+        if (!empty ($retu)) {
+        // var_dump('QUERY_STMT');
+        return $retu;
+
+            // var_dump($retu);
+        }else{
+            return 'no match found';
+        }
     }
     public function where()
     {

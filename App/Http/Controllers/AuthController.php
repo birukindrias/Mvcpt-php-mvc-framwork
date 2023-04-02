@@ -11,7 +11,7 @@ class AuthController extends Controller
 
     public function index()
     {
-        return $this->render('home', 'home');
+        return $this->render('hosme', 'home');
     }
     public function register()
     {
@@ -25,7 +25,6 @@ class AuthController extends Controller
                 $id =  $users->get(['email' => $data['email'], 'password' => $data['password']])[0]['id'];
                 App::$app->session->setItem('id', $id);
                 App::$app->session->setFlash('success', 'Thanks for registering');
-                ($users->errors);
                 App::$app->response->redirect('/home');
                 return 'Show success page';
             }
@@ -46,7 +45,7 @@ class AuthController extends Controller
                 echo 'email or password is wrong!';
             }
         }
-        return  $this->render('pages/Auth/login', 'login');
+        return  $this->render('pages/Auth/login', 'mvc | Login');
     }
     public function logOut()
     {

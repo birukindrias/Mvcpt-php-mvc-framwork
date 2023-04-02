@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\kernel\App;
-use App\kernel\Request;
+use App\config\App;
+use App\config\Request;
 
 class  artisan
 {
@@ -14,7 +14,9 @@ class  artisan
 
     //  (   $argv[] la );
     $lat =     array_key_last($argv);
+    var_dump($lat);
     $filename = $argv[$lat] ?? '';
+    var_dump(  $filename);
     $file = $filename ?? '';
     $name =
       $file ?? '';
@@ -25,22 +27,30 @@ class  artisan
       shell_exec("php -S localhost:8080 -t public");
     }
     foreach ($argv as $key) {
-
+        $upd = 'up';
 
       if ($key == '-migrate') {
         
         if (in_array('down', $argv)) {
-          $uord = 'down';
+          $upd = 'down';
         }
-        if ($key == 'down' || $key == 'up') {
-          $func =  $key ?? '';
+        if (in_array('up', $argv )) {
+            $upd = 'up';
+            $this->log('migrating..');
+            $this->log('migrating...');
+            $this->log('migrating.....');
+
         }
+        
+        // $this->log('yes its working men * we made it* ');
+        // echo '------------ migrating -----------'. PHP_EOL;
+   
         require_once __DIR__ . "/config/migration/Migration.php";
         $migpath = __DIR__ . "/config/migration/Migration.php $uord";
       }
-      if ($key == '-c') {
-        require_once __DIR__ . "/kernel/strings/controller/controller.php";
-        $controller =  fopen('app/controller/' . $file . '.php', 'wr', true);
+      if ($key == 'make:controller') {
+        require_once __DIR__ . "/config/strings/controller/controller.php";
+        $controller =  fopen('App/Http/Controllers/' . $file . '.php', 'wr', true);
         if (
           fwrite($controller, $fileinfo)
 
@@ -57,15 +67,16 @@ class  artisan
       ****************\n" . PHP_EOL;
         }
       }
-      if ($key == 'del' and $key == '-d') {
+      if ($key == 'del' || $key == '-d') {
 
         $del = dirname(__DIR__) . "/mvc_by_me/controller/" . $file . ".php";
+        var_dump(   $del);
         shell_exec("sudo rm $del");
       }
       if ($key == '-model') {
-        require_once __DIR__ . "/kernel/strings/controller/modal.php";
+        require_once __DIR__ . "/config/strings/controller/modal.php";
 
-        $controller =  fopen('app/modal/' . $file . '.php', 'wr', true);
+        $controller =  fopen(__DIR__.'/app/modal/' . $file . '.php', 'wr', true);
         if (fwrite($controller, $fileinfo)) {
           # code...
           echo "
@@ -81,7 +92,7 @@ class  artisan
         }
       }
       if ($key == '-migration') {
-        require_once __DIR__ . "/kernel/strings/controller/migration.php";
+        require_once __DIR__ . "/config/strings/controller/migration.php";
 
         $controller =  fopen('database/migrations/' . ucfirst($name) . '.php', 'wr', true);
         if (fwrite($controller, $fileinfo)) {
@@ -98,12 +109,17 @@ class  artisan
         }
       }
       if ($key == 'v') {
-        require_once __DIR__ . "/kernel/strings/controller/modal.php";
+        require_once __DIR__ . "/config/strings/controller/modal.php";
         $controller =  fopen('view/' . $file . '.php', 'wr', true);
         fwrite($controller, $viewInfo);
       }
     }
   }
+  public function log($message)
+  {
+      echo "[" . date("Y-m-d H:i:s") . "] - " . $message . PHP_EOL;
+  }
 }
 
 new artisan($argv);
+

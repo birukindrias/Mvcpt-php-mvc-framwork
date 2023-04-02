@@ -7,6 +7,7 @@ use App\config\View;
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
+// var_dump($_ENV)p.en;
 $db_config = [
 
     'DNS' => $_ENV['DB_DNS'],

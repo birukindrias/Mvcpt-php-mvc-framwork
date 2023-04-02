@@ -22,13 +22,14 @@ class App
     public function __construct($db_config)
     {
         self::$app = $this;
+        $this->database = new Database($db_config);
+
         self::$main_path = 'dirname(__DIR__)';
         $this->users = new Users();
         $this->request = new Request();
         $this->response = new Response();
         $this->session = new Session();
         $this->router = new Router();
-        $this->database = new Database($db_config);
         $this->view = new View();
     }
     public function isGuest()
@@ -48,9 +49,16 @@ class App
         try {
             echo  $this->router->resolve();
         } catch (\Exception $e) {
+            // echo "<pre>";
+            // var_dump($e);
+            // echo "</pre>";
             $this->view->title = 'error';
             $this->response->setStatusCode($e->getCode());
-            echo App::$app->view->render('pages/error/error', 'error', ['error' => $e]);
+
+            echo $e->getCode();
+            echo $e->getMessage();
+            echo  App::$app->view->render('pages/error/error', 'error', ['error' => $e]);
+
         }
     }
 }

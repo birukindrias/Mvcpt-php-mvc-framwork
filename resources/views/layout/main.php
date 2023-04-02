@@ -5,16 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+    <!-- <style>
     * {
         margin: 0;
         box-sizing: border-box;
         padding: 0;
     }
-    </style>
+    </style> -->
     <?php
     use App\config\App;
-    $this->asset('css/style.css');
+    // $this->asset('css/style.css');
+    // $this->asset('css/output.css');
+    $this->asset('css/tailwind.css');
+
     ?>
     <title>
         <?= $this->title ?>
@@ -22,65 +25,91 @@
     {style}
 </head>
 
-<body class=" bg-black">
+<body >
+<header x-data="
+        {
+          navbarOpen: false
+        }
+      " class="flex w-full items-center bg-white">
+        <div class="container mx-auto">
+            <div class="relative -mx-4 flex items-center justify-between">
+                <div class="w-60 max-w-full px-4">
+                    <a href="javascript:void(0)" class="block  h-16 w-16">
+                        <img src="/assets/logo.jpg" alt="logo" class="w-full" />
+                    </a>
+                </div>
+                <div class="flex w-full items-center justify-between px-4">
+                    <div>
+                        <button @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive' " id="navbarToggler" class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden">
+                <span
+                  class="relative my-[6px] block h-[2px] w-[30px] bg-body-color"
+                ></span>
+                <span
+                  class="relative my-[6px] block h-[2px] w-[30px] bg-body-color"
+                ></span>                
+               
+                <span
+                  class="relative my-[6px] block h-[2px] w-[30px] bg-body-color"
+                ></span>
+              </button>
+                        <nav :class="!navbarOpen && 'hidden' " id="navbarCollapse" class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 px-6 shadow lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none">
+                            <!-- <ul class="block lg:flex">
+                                
+                                <li>
+                                    <a href="javascript:void(0)" class="flex py-2 text-base font-medium text-dark hover:text-primary lg:ml-12 lg:inline-flex">
+                      Payment
+                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="flex py-2 text-base font-medium text-dark hover:text-primary lg:ml-12 lg:inline-flex">
+                      Features
+                    </a>
+                                </li>
+                            </ul> -->
+                        </nav>
+                    </div>
+                    <div class="mb-2">
+                        <form action="/search" method="post">
+                    <?php
+                    $this->item('box','search');
 
+        ?>
+                    </div>
+                    </form>
 
-    <nav class="bg-gray-700 border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-900">
-        <div class="container flex flex-wrap justify-between items-center mx-auto">
-            <a href="https://PWT.com/" class="flex items-center">
-                <img src="https://thumbs.dreamstime.com/z/website-icon-vector-design-illustration-www-flat-symbol-logo-graphic-elements-app-ui-isolated-white-background-172632728.jpg"
-                    class="mr-3  rounded-full sm:h-9" alt="PWT Logo">
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-                    WWW
-                </span>
-            </a>
-            <button data-collapse-toggle="navbar-default" type="button"
-                class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul
-                    class="flex flex-col p-4 mt-4 b bg-black rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                    <li>
-                        <a href="/home"
-                            class="block py-2 pr-4 pl-3 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-                            aria-current="page">Home</a>
-                    </li>
+                    <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
+                 
                     <?php
 
-                    if (App::$app->isGuest()) { ?>
+     if (App::$app->isGuest()) { ?>
 
-                    <li>
-                        <a href="/login"
-                            class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">login</a>
-                    </li>
-                    <li>
-                        <a href="/register"
-                            class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">register</a>
-                    </li>
-                    <?php  } else { ?>
-
-                    <li>
-                        <a href="/profile"
-                            class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Profile</a>
-                    </li>
-                    <li>
-                        <a href="/logout"
-                            class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">logout</a>
-                    </li>
-                    <?php   }
+                        <a href="/login" class="py-3 px-7 text-base font-medium text-dark hover:text-primary">                
+              
+                Login
+              </a>
+                        <a href="/register" class="rounded-lg bg-primary py-3 px-7 text-base font-medium text-white bg-blue-500 hover:bg-opacity-90">
+                Sign Up
+              </a>
+              <?php  } else { ?>
+                                           
+                               
+                <a href="/home" class="py-3 px-7 text-base font-medium text-dark hover:text-primary">
+                Home
+              </a>
+                <a href="/profile" class="py-3 px-7 text-base font-medium text-dark hover:text-primary">
+                Profile
+              </a>
+                <a href="/logout" class="py-3 px-7 text-base font-medium text-dark hover:text-primary">
+                Logout
+              </a>
+              <?php   } 
                     ?>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
+
     {content}
     <!-- {script} -->
 </body>
