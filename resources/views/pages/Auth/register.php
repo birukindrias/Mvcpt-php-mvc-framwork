@@ -29,7 +29,7 @@
                             <input name="password" type="password" placeholder="Password" class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none" />
                         </div>
                         <div class="mb-6">
-                            <input name="cpass" type="password" placeholder="cnfurm psswod" class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none" />
+                            <input name="cpass" type="password" placeholder="Confuirm Pssword" class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none" />
                         </div>
                         <div class="mb-10">
                             <input type="submit" value="Sign Up" name="submit" class="bordder-primary w-full cursor-pointer rounded-md border bg-blue-500 py-3 px-5 text-base text-white transition hover:bg-opacity-90" />

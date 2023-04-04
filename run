@@ -47,9 +47,7 @@ class  artisan
                     }
                     shell_exec("php -S localhost:808$i -t public");
                 }
-                if (shell_exec("php -S localhost:8080 -t public")) {
-                    $this->log('💥starting server 🚀 started successfully 💯💯' . $dot) . PHP_EOL;
-                }
+               
             }
             // error_reporting(E_ERROR);
         }

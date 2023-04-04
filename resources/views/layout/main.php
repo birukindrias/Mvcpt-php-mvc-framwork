@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/tailwind.css" />
     <script defer src="assets/js/alpine.min.js"></script>
+    <link rel="shortcut icon" href="assets/fa.png" type="image/x-icon" />
+
     <?php
     use App\config\App;
     $this->assetjs('js/alpine.min.js');
