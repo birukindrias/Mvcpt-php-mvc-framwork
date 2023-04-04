@@ -9,12 +9,44 @@
 
 :fast_forward:  ecommerce website built on top of  PHP mvc framwork which build to make developement fast it includes migrations routing styling with tailwindcss,bultin php cli and other functionality it also come with built in login and sign up functionality.the app include product slling and adding to cart search functionalites.
 
-# Start the project
+# Start Project
 #<code>php run</code> 
 
 # Run Migrations
 #<code>php run migrate</code> 
 
-# To add migrations go to database/migrations folder and add your mysql
-and run <code>php run migrate</code>
-it will automatically add it to your database tables
+# Run Drop Migrations 
+#<code>php run migrate:refresh</code> 
+
+# Add Migration Classes in database/Migrations 
+#<code>
+<?php
+// namespace App\database\Migrations;
+
+use App\config\App;
+
+class  users
+{
+    public function up()
+    {
+        $sql =  "CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+            username VARCHAR(50),
+            email VARCHAR(50),
+            password VARCHAR(50),
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            image VARCHAR(50))
+ ENGINE = INNODB;";
+        App::$app->database->pdo->exec($sql);
+        App::$app->database->log("users Table Created");
+    }
+    public function down()
+    {
+        $SQL_QUERY = "DROP TABLE IF EXISTS  users;";
+        App::$app->database->log("users Droped");
+        App::$app->database->pdo->exec($SQL_QUERY);
+    }
+}
+</code> 
+
+
