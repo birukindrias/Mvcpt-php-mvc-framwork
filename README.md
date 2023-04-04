@@ -8,7 +8,7 @@
 ![alt mvcpt](https://github.com/birukindrias/Mvcpt-php-mvc-framwork/blob/main/storage/8.png)
 
 
-:zap: :zap: PHPMVC framwork build to make developement fast it includes migrations routing styling with tailwindcss,bultin php cli and other functionality it also come with built in login and sign up functionality.
+:zap: :zap: MVCPHP framwork build to make developement fast it includes migrations routing styling with tailwindcss,bultin php cli and other functionality it also come with built in login and sign up functionality.
 
 # Start Project
 ```
