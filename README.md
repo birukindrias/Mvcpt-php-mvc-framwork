@@ -10,7 +10,9 @@
 :fast_forward:  ecommerce website built on top of  PHP mvc framwork which build to make developement fast it includes migrations routing styling with tailwindcss,bultin php cli and other functionality it also come with built in login and sign up functionality.the app include product slling and adding to cart search functionalites.
 
 # Start Project
-#<code>php run</code> 
+```
+php run
+``` 
 
 # Run Migrations
 ```php run migrate
