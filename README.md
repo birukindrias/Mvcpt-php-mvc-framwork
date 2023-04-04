@@ -27,7 +27,14 @@ php run migrate
 ```
 php run migrate:refresh
 ```
+
+
 # Add Migration Classes in database/Migrations 
+
+```
+php run make:migration users
+```
+
 ```
 <?php
 
