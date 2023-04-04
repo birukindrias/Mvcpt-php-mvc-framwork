@@ -22,15 +22,13 @@ abstract class Model extends DbModel
         foreach ($Data as $key => $value) {
             if (property_exists($this, $key)) {
                 if ($key != '') {
-                    $this->{$key} = $value ;
-
+                    $this->{$key} = $value;
                 }
             }
         }
     }
-    public function uploadFile(   )
+    public function uploadFile()
     {
-        
     }
     public function validate()
     {

@@ -6,7 +6,7 @@
 
 
 <!-- ====== Forms Section Start -->
-<section class="bg-[#F4F7FF] py-20 lg:py-[120px]">
+<section class="bg-[#F4F7FF] py-10  lg:py-[110px]">
     <div class="container mx-auto">
         <div class="-mx-4 flex flex-wrap">
             <div class="w-full px-4">
@@ -14,7 +14,7 @@
                     <div class="mb-4 text-center md:mb-11">
                         <a href="/" class="mx-auto inline-block max-w-[160px]">
                             <img src="/assets/logo.jpg" alt="logo" />
-                            <!-- <h3> Login </h3> -->
+                            <!-- <h3> Sign Up</h3> -->
                         </a>
                     </div>
                     <form action="/register" method="POST" enctype="multipart/form-data">
@@ -99,7 +99,7 @@
                         Forget Password?
                     </a>
                     <p class="text-base text-[#adadad]">
-                        Not a member yet?
+                        are you a member?
                         <a href="login" class="text-primary hover:underline">
                             Login
                         </a>

@@ -11,7 +11,7 @@ class AuthController extends Controller
 
     public function index()
     {
-        return $this->render('hosme', 'home');
+        return $this->render('home', 'home');
     }
     public function register()
     {
@@ -29,7 +29,7 @@ class AuthController extends Controller
                 return 'Show success page';
             }
         }
-        return  $this->render('pages/Auth/register', 'register');
+        return  $this->render('pages/Auth/register', 'mvc | Register');
     }
     public function login()
     {

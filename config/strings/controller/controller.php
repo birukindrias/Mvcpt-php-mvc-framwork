@@ -20,17 +20,17 @@ class ' . $filename . ' extends Controller
       return ;
 
     }
-      public  function insert()
+      public  function store()
     {
         if (App::$app->request->is_Post()) {
-            // var_dump(App::$app->request->getBody());
-            $DATA = App::$app->request->reqData();
-            $USER = new Users();
+            // var_dump(App::$app->request->reqData());
+            $data = App::$app->request->reqData();
+            $user = new Users();
 
-            $USER->loadData($DATA);
-            // var_dump($DATA);
-            $USER->validate();
-            $USER->save();
+            $user->loadData($data);
+            // var_dump($data);
+            $user->validate();
+            $user->save();
             return;
         }
 

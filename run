@@ -7,119 +7,133 @@ use App\config\Request;
 
 class  artisan
 {
-
-  public function __construct($argv)
-  {
-    $dir = __DIR__;
-
-    //  (   $argv[] la );
-    $lat =     array_key_last($argv);
-    var_dump($lat);
-    $filename = $argv[$lat] ?? '';
-    var_dump(  $filename);
-    $file = $filename ?? '';
-    $name =
-      $file ?? '';
-    if (
-      $argv[0] == 'run' and
-      $argv[1] == ''
-    ) {
-      shell_exec("php -S localhost:8080 -t public");
-    }
-    foreach ($argv as $key) {
-        $upd = 'up';
-
-      if ($key == '-migrate') {
-        
-        if (in_array('down', $argv)) {
-          $upd = 'down';
-        }
-        if (in_array('up', $argv )) {
-            $upd = 'up';
-            $this->log('migrating..');
-            $this->log('migrating...');
-            $this->log('migrating.....');
-
-        }
-        
-        // $this->log('yes its working men * we made it* ');
-        // echo '------------ migrating -----------'. PHP_EOL;
-   
-        require_once __DIR__ . "/config/migration/Migration.php";
-        $migpath = __DIR__ . "/config/migration/Migration.php $uord";
-      }
-      if ($key == 'make:controller') {
-        require_once __DIR__ . "/config/strings/controller/controller.php";
-        $controller =  fopen('App/Http/Controllers/' . $file . '.php', 'wr', true);
+    public function __construct($argv)
+    {
+        $dir = __DIR__;
+        $filename = $argv[array_key_last($argv)] ?? '';
         if (
-          fwrite($controller, $fileinfo)
-
+            empty($argv[1])
         ) {
-          echo "
-      ****************
-      *********
-      ****
-      
-      CONTROLLER CREATED SUCCESSFULLY! 
-       
-      ****
-      *********
-      ****************\n" . PHP_EOL;
-        }
-      }
-      if ($key == 'del' || $key == '-d') {
+            $ran = rand(0, 6);
+            for ($i = 0; $i < $ran; $i++) {
+                $dot =  str_repeat('🚀 ', $i);
 
-        $del = dirname(__DIR__) . "/mvc_by_me/controller/" . $file . ".php";
-        var_dump(   $del);
-        shell_exec("sudo rm $del");
-      }
-      if ($key == '-model') {
-        require_once __DIR__ . "/config/strings/controller/modal.php";
+                $this->log('💥starting server ⛽🚀' . $dot) . PHP_EOL;
+            }
 
-        $controller =  fopen(__DIR__.'/app/modal/' . $file . '.php', 'wr', true);
-        if (fwrite($controller, $fileinfo)) {
-          # code...
-          echo "
-          ****************
-          *********
-          ****
-          
-          $file MODEL CREATED SUCCESSFULLY! 
-          
-          ****
-          *********
-          ****************\n" . PHP_EOL;
-        }
-      }
-      if ($key == '-migration') {
-        require_once __DIR__ . "/config/strings/controller/migration.php";
+            // error_reporting(E_ERROR | E_PARSE);
 
-        $controller =  fopen('database/migrations/' . ucfirst($name) . '.php', 'wr', true);
-        if (fwrite($controller, $fileinfo)) {
-          echo "
-      ****************
-      *********
-      ****
-      
-      $name MIGRATION CREATED SUCCESSFULLY! 
-       
-      ****
-      *********
-      ****************\n" . PHP_EOL;
+            if (file_get_contents('http://localhost:8080/')) {
+                echo '🥺🥺 server is down dont worry trying another one' . PHP_EOL;
+                for ($i = 0; $i < 5; $i++) {
+                    $ran = rand(0, 6);
+                    for ($i = 0; $i < $ran; $i++) {
+                        $dot =  str_repeat('🚀 ', $i);
+
+                        $this->log('💥starting server ⛽🚀' . $dot) . PHP_EOL;
+                    }
+                    shell_exec("php -S localhost:808$i -t public");
+                }
+            } else {
+
+                $this->log('💥 server 🚀 started successfully 💯💯' . $dot) . PHP_EOL;
+                echo '🥺🥺 server is down dont worry trying another one' . PHP_EOL;
+                for ($i = 0; $i < 5; $i++) {
+                    $ran = rand(0, 6);
+                    for ($i = 0; $i < $ran; $i++) {
+                        $dot =  str_repeat('🚀 ', $i);
+
+                        $this->log('💥starting server ⛽🚀' . $dot) . PHP_EOL;
+                    }
+                    shell_exec("php -S localhost:808$i -t public");
+                }
+                if (shell_exec("php -S localhost:8080 -t public")) {
+                    $this->log('💥starting server 🚀 started successfully 💯💯' . $dot) . PHP_EOL;
+                }
+            }
+            // error_reporting(E_ERROR);
         }
-      }
-      if ($key == 'v') {
-        require_once __DIR__ . "/config/strings/controller/modal.php";
-        $controller =  fopen('view/' . $file . '.php', 'wr', true);
-        fwrite($controller, $viewInfo);
-      }
+        foreach ($argv as $key) {
+
+            switch ($key) {
+                case 'migrate:refresh':
+                    $upd = 'down';
+                    echo '------------rolling-----------' . PHP_EOL;
+                    $ran = rand(0, 6);
+                    for ($i = 0; $i < $ran; $i++) {
+                        $dot =  str_repeat('⛷', $i);
+
+                        $this->log('💥rolling' . $dot) . PHP_EOL;
+                    }
+                    echo ' ------------DONE----------- ' . PHP_EOL;
+
+                    // echo '....   DONE  .....' . PHP_EOL;
+
+                    require_once __DIR__ . "/config/migration/Migration.php";
+                    break;
+                case 'migrate':
+                    $upd = 'up';
+                    echo '------------ migrating -----------' . PHP_EOL;
+                    $ran = rand(0, 6);
+                    for ($i = 0; $i < $ran; $i++) {
+                        $dot =  str_repeat('🚣‍♂️', $i);
+
+                        $this->log('💥migrating' . $dot) . PHP_EOL;
+                    }
+                    echo ' ------------DONE----------- ' . PHP_EOL;
+
+                    require_once __DIR__ . "/config/migration/Migration.php";
+
+                    break;
+                case 'make:controller':
+                    require_once __DIR__ . "/config/strings/controller/controller.php";
+                    $controller =  fopen('App/Http/Controllers/' . $filename . '.php', 'wra', true);
+                    if (
+                        fwrite($controller, $fileinfo)
+
+                    ) {
+                        $this->log("💥 $filename controller successfully created 💯💯") . PHP_EOL;
+                    }
+                    break;
+                case 'del:controller':
+                    $del = __DIR__ . "/App/Http/Controllers/" . $filename . ".php";
+                    $this->log("💥 $filename controller successfully deleted 💯💯") . PHP_EOL;
+
+                    $user_auth =  shell_exec("sudo rm $del");
+                    if (
+                        $user_auth
+
+                    ) {
+                        $this->log("💥 $filename controller successfully deleted 💯💯") . PHP_EOL;
+                    }
+                    break;
+                case 'make:model':
+                    require_once __DIR__ . "/config/strings/controller/modal.php";
+
+                    $controller =  fopen(__DIR__ . '/App/models/' . $filename . '.php', 'wr', true);
+                    if (fwrite($controller, $fileinfo)) {
+                        $this->log("💥 $filename model successfully created 💯💯") . PHP_EOL;
+                    }
+                    break;
+                case 'make:migration':
+                    require_once __DIR__ . "/config/strings/controller/migration.php";
+
+                    $controller =  fopen(__DIR__ . '/database/Migrations/' . lcfirst($filename) . '.php', 'wr', true);
+                    if (fwrite($controller, $fileinfo)) {
+                        $this->log("💥 $filename migration successfully created 💯💯") . PHP_EOL;
+                    }
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+        }
     }
-  }
-  public function log($message)
-  {
-      echo "[" . date("Y-m-d H:i:s") . "] - " . $message . PHP_EOL;
-  }
+
+    public function log($message)
+    {
+        echo "[" . date("Y-m-d H:i:s") . "] - " . $message . PHP_EOL;
+    }
 }
-
 new artisan($argv);
-
