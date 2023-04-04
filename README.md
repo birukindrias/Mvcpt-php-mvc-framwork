@@ -23,6 +23,10 @@ php run migrate
 # Run Drop Migrations 
 
 ```
+php run migrate
+``` 
+
+```
 php run migrate:refresh
 ```
 # Add Migration Classes in database/Migrations 
