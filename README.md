@@ -7,7 +7,7 @@
 ![alt mvcpt](https://github.com/birukindrias/Mvcpt-php-mvc-framwork/blob/main/storage/8.png)
 
 
-:fast_forward:  PHPMVC framwork build to make developement fast it includes migrations routing styling with tailwindcss,bultin php cli and other functionality it also come with built in login and sign up functionality.
+:fast_forward: :zap: PHPMVC framwork build to make developement fast it includes migrations routing styling with tailwindcss,bultin php cli and other functionality it also come with built in login and sign up functionality.
 
 # Start Project
 ```
@@ -22,7 +22,8 @@ php run migrate
 
 # Run Drop Migrations 
 
-```php run migrate:refresh
+```
+php run migrate:refresh
 ```
 # Add Migration Classes in database/Migrations 
 ```
