@@ -21,7 +21,6 @@
 # Add Migration Classes in database/Migrations 
 #<code>
 <?php
-// namespace App\database\Migrations;
 
 use App\config\App;
 
