@@ -22,9 +22,6 @@ php run migrate
 
 # Run Drop Migrations 
 
-```
-php run migrate
-``` 
 
 ```
 php run migrate:refresh
