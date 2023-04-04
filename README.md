@@ -19,9 +19,7 @@ php run
 ```
 
 # Run Drop Migrations 
-```
-php run migrate:refresh
-
+```php run migrate:refresh
 ```
 
 # Add Migration Classes in database/Migrations 
