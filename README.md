@@ -13,10 +13,14 @@
 #<code>php run</code> 
 
 # Run Migrations
-#<code>php run migrate</code> 
+```php run migrate
+```
 
 # Run Drop Migrations 
-#<code>php run migrate:refresh</code> 
+```
+php run migrate:refresh
+
+```
 
 # Add Migration Classes in database/Migrations 
 ```
