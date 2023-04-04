@@ -19,7 +19,7 @@
 #<code>php run migrate:refresh</code> 
 
 # Add Migration Classes in database/Migrations 
-#<code>
+```
 <?php
 
 use App\config\App;
@@ -46,6 +46,6 @@ class  users
         App::$app->database->pdo->exec($SQL_QUERY);
     }
 }
-</code> 
+```
 
 
