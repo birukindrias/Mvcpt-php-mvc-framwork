@@ -1,15 +1,16 @@
+
 <?php
 namespace App\App\Http\Controllers;
 
 use App\App\models\Users;
 use App\config\App;
 use App\config\Controller;
-class UserController extends Controller
+class asdfusersi extends Controller
 {
-    public function UserController()
+    public function asdfusersi()
     {
-       $title = "UserController";
-       return $this->render("UserController"); 
+       $title = "asdfusersi";
+       return $this->render("asdfusersi"); 
       
     }
   

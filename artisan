@@ -24,7 +24,7 @@ class  artisan
         foreach ($argv as $key) {
 
             switch ($key) {
-                case 'migrate:refresh':
+                case 'migrate:refresh' :
                     $upd = 'down';
                     echo '------------rolling-----------' . PHP_EOL;
                     $ran = rand(0, 6);
@@ -39,7 +39,7 @@ class  artisan
 
                     require_once __DIR__ . "/config/migration/Migration.php";
                     break;
-                case 'migrate':
+                case 'migrate' :
                     $upd = 'up';
                     echo '------------ migrating -----------' . PHP_EOL;
                     $ran = rand(0, 6);
@@ -54,28 +54,13 @@ class  artisan
 
                     break;
                 case 'make:controller':
-                    require_once __DIR__ . "/config/strings/controller/controller.php";
-                    $controller =  fopen('App/Http/Controllers/' . $filename . '.php', 'wra', true);
-                    if (
-                        fwrite($controller, $fileinfo)
-
-                    ) {
-                        $this->log("💥 $filename controller successfully created 💯💯") . PHP_EOL;
-                    }
+                   $this->mcontroller ($filename);
                     break;
                 case 'del:controller':
-                    $del = __DIR__ . "/App/Http/Controllers/" . $filename . ".php";
-                    $this->log("💥 $filename controller successfully deleted 💯💯") . PHP_EOL;
-
-                    $user_auth =  shell_exec("sudo rm $del");
-                    if (
-                        $user_auth
-
-                    ) {
-                        $this->log("💥 $filename controller successfully deleted 💯💯") . PHP_EOL;
-                    }
+                    echo "del";
+                  $this->del($filename);
                     break;
-                case 'make:model':
+                case 'make:model' :
                     require_once __DIR__ . "/config/strings/controller/modal.php";
 
                     $controller =  fopen(__DIR__ . '/App/models/' . $filename . '.php', 'wr', true);
@@ -94,7 +79,7 @@ class  artisan
 
 
                 default:
-                $this->run();
+                // $this->run();
                 break;
             }
         }
@@ -142,5 +127,29 @@ class  artisan
             }
            
         }}
+        public function del($filename)
+        {
+            $del = __DIR__ . "/App/Http/Controllers/" . $filename . ".php";
+            $this->log("💥 $filename controller successfully deleted 💯💯") . PHP_EOL;
+
+            $user_auth =  shell_exec("sudo rm $del");
+            if (
+                $user_auth
+
+            ) {
+                $this->log("💥 $filename controller successfully deleted 💯💯") . PHP_EOL;
+            }
+        }
+        public function mcontroller($filename)
+        {
+            require_once __DIR__ . "/config/strings/controller/controller.php";
+            $controller =  fopen('App/Http/Controllers/' . $filename . '.php', 'wra', true);
+            if (
+                fwrite($controller, $fileinfo)
+
+            ) {
+                $this->log("💥 $filename controller successfully created 💯💯") . PHP_EOL;
+            }
+        }
 }
 new artisan($argv);
