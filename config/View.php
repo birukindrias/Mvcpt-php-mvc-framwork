@@ -175,6 +175,10 @@ class View
                 break;
         }
     }
+    public function widjet()
+    {
+        return 'widjet';
+    }
     /**
      * render
      *
