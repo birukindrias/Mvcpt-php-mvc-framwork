@@ -63,7 +63,7 @@ class  artisan
                 case 'make:model' :
                     require_once __DIR__ . "/config/strings/controller/modal.php";
 
-                    $controller =  fopen(__DIR__ . '/App/models/' . $filename . '.php', 'wr', true);
+                    $controller =  fopen(__DIR__ . '/App/models/' . $filename . '.php', 'wra', true);
                     if (fwrite($controller, $fileinfo)) {
                         $this->log("💥 $filename model successfully created 💯💯") . PHP_EOL;
                     }
@@ -76,6 +76,52 @@ class  artisan
                         $this->log("💥 $filename migration successfully created 💯💯") . PHP_EOL;
                     }
                     break;
+
+
+                default:
+                // $this->run();
+                break;
+            }
+        }
+        foreach ($argv as $key) {
+
+            switch ($key) {
+          
+           case 'del:a':
+
+            $del = __DIR__ . "/App/Http/Controllers/" . $filename . ".php";
+            // $user_auth =  shell_exec("sudo rm $del");
+            $io = __DIR__ . "/database/Migrations/" . $filename . ".php";
+            // $user_auth =  shell_exec("sudo rm $del");
+            $cc = __DIR__ . "/App/models/" . $filename . ".php";
+            $user_auth =  shell_exec("sudo rm $del $cc $io");
+
+            $this->log("💥 $filename controller successfully deleted 💯💯") . PHP_EOL;
+
+            if (
+                $user_auth
+
+            ) {
+                $this->log("💥 $filename controller successfully deleted 💯💯") . PHP_EOL;
+            }
+            break;
+                case '-a':
+                   $this->mcontroller ($filename,$hi ='Controller');
+                   require_once __DIR__ . "/config/strings/controller/modal.php";
+
+                   $controller =  fopen(__DIR__ . '/App/models/' . $filename . '.php', 'wra', true);
+                   if (fwrite($controller, $fileinfo)) {
+                       $this->log("💥 $filename model successfully created 💯💯") . PHP_EOL;
+                   }
+                   require_once __DIR__ . "/config/strings/controller/migration.php";
+
+                   $controller =  fopen(__DIR__ . '/database/Migrations/' . lcfirst($filename) . '.php', 'wr', true);
+                   if (fwrite($controller, $fileinfo)) {
+                       $this->log("💥 $filename migration successfully created 💯💯") . PHP_EOL;
+                   }
+                    break;
+                
+                
 
 
                 default:
@@ -140,12 +186,20 @@ class  artisan
                 $this->log("💥 $filename controller successfully deleted 💯💯") . PHP_EOL;
             }
         }
-        public function mcontroller($filename)
+        public function mcontroller($filename,$hi = '')
         {
+            $filename = $filename . $hi;
+
             require_once __DIR__ . "/config/strings/controller/controller.php";
-            $controller =  fopen('App/Http/Controllers/' . $filename . '.php', 'wra', true);
+            $controller =  fopen('App/Http/Controllers/' . $filename .'.php','a');
+            // fclose($controller);
+// ejcho $fileinfo;
+// j
+            // file_put_contents('App/Http/Controllers/' . $filename . '.php', $fileinfo);
             if (
                 fwrite($controller, $fileinfo)
+// file_put_contents('App/Http/Controllers/' . $filename . '.php', $contents)
+
 
             ) {
                 $this->log("💥 $filename controller successfully created 💯💯") . PHP_EOL;
