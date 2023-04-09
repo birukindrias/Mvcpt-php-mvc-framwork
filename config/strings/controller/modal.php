@@ -1,6 +1,5 @@
 <?php
-$fileinfo =  '
-<?php
+$fileinfo =  '<?php
 namespace App\App\models;
 
 use App\config\Model;

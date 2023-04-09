@@ -32,6 +32,24 @@ class Controller extends ConfigController
       'user' => App::$app->users
     ]);
   }
+  public  function serch_item()
+  {
+      if (App::$app->request->is_post()) {
+          $DATA = App::$app->request->reqData();
+          $USER = new Users();
+          // //($DATA);
+          $DATA['username'] = $DATA['search'];
+          unset ($DATA['search']);
+          // $USER->loadData($DATA);
+          // $USER->validate();
+         $serach_result= $USER->search($DATA);
+     return $this->render('pages/users/search','ser',['search'=>$serach_result
+  ]); 
+              return false ;
+      }
+
+    
+  }
   public function dashboard()
   {
     return $this->render('pages/users/dashboard', 'Dashboard');

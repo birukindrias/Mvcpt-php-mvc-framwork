@@ -9,19 +9,18 @@ class View
 {
     public string $layout = 'main';
     public string $title = 'index';
-    public function import_template($file_template, $keys)
+    public function import_template($template_name, $keys)
     {
-        // ob_start();
-        // // include_once dirname(__DIR__)."//../tl/forms.html";
-
-        // include_once dirname(__DIR__) . '/resources/views/tl/' . $file_template . '.html';
-        // echo ob_get_clean();
+        
         foreach ($keys as $key => $value) {
             $$key = $value;
         }
-        include_once dirname(__DIR__) . '/resources/views/tl/' . $file_template;
+        ob_start();
+        include_once dirname(__DIR__) . '/resources/components/'. $template_name . '.html';
+        echo ob_get_clean();
+
     }
-    public function item($value, $name = 'text', $type = 'text', $pl = 'text')
+    public function item($value, $name = 'text', $type = 'text', $pl = 'text' ,$action= '')
     {
         $pl = $pl ? $name : $pl;
         switch ($value) {
@@ -51,7 +50,21 @@ class View
    </div>
 ';
                 break;
-            case 'form':
+            case 'forms':
+                echo '<section class="bg-[#F4F7FF] py-20 lg:py-[120px]">
+                <div class="container mx-auto">
+                    <div class="-mx-4 flex flex-wrap">
+                        <div class="w-full px-4">
+                            <div class="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px]">
+                                <div class="mb-4 text-center md:mb-11">
+                                    <a href="/" class="mx-auto inline-block max-w-[160px]">
+                                        <img src="/assets/logo.jpg" alt="logo" />
+                                        <!-- <h3> Login </h3> -->
+                                    </a>
+                                </div>
+                                <form action="' . $action . '" method="post" enctype="multipart/form-data">';
+                break;
+            case 'formd':
                 echo '
               
                                 </form>
@@ -273,5 +286,14 @@ class View
     {
         $assets = file_get_contents(dirname(__DIR__) . '/resources/assets/' . $asset);
         return  App::$app->assetsStyleValue .= "<script>  $assets </script>";
-    }
+    }       
+    /**
+     * component
+     *
+     * @param mixed name
+     *
+     * @return void
+     */
+    
+
 }

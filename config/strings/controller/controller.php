@@ -1,6 +1,5 @@
 <?php
-$fileinfo = '
-<?php
+$fileinfo = '<?php
 namespace App\App\Http\Controllers;
 
 use App\App\models\Users;

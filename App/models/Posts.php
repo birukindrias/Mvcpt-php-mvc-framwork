@@ -1,15 +1,14 @@
-
 <?php
 namespace App\App\models;
 
 use App\config\Model;
-class Produccontr extends Model 
+class Posts extends Model 
 {
   
 
     public static function tableName(): string
     {
-        return "Produccontrs";
+        return "Postss";
     }
     public function rules(): array
     {
