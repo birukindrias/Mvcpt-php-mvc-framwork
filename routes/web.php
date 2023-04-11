@@ -2,6 +2,7 @@
 
 use App\App\Http\Controllers\AuthController;
 use App\App\Http\Controllers\Controller;
+use App\App\Http\Controllers\PostsController as ControllersPostsController;
 use App\App\Http\Controllers\Products\ProductsController;
 use App\App\Http\Controllers\UserController;
 use App\config\App;
@@ -20,5 +21,5 @@ $route->post('/search', [UserController::class, 'serch_item']);
 $route->get('/home', [Controller::class, 'dashboard']);
 $route->get('/', [Controller::class, 'index']);
 // products
-$route->post('/create', [ProductsController::class, 'store']);
-$route->get('/create', [ProductsController::class, 'create']);
+$route->post('/create', [ControllersPostsController::class, 'store']);
+$route->get('/create', [ControllersPostsController::class, 'create']);

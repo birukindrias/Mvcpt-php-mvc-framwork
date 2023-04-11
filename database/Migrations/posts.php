@@ -5,10 +5,10 @@ class posts{
     public function up()
     {
         $SQL_QUERY = "CREATE TABLE IF NOT EXISTS  posts (
-                  pid INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-                  post_body VARCHAR(50),
-                  post_img VARCHAR(50) ,
-                  password VARCHAR(50)
+                  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+                  body VARCHAR(50),
+                  post_img VARCHAR(50),
+                  user_id VARCHAR(50)
        )
        ENGINE = INNODB;";
         App::$app->database->pdo->exec($SQL_QUERY);

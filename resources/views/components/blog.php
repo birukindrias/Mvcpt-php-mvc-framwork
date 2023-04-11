@@ -21,7 +21,7 @@
            echo '<div class="w-full px-4 md:w-1/2 lg:w-1/3 text-center">'.$search.'';
            return;
           }
-            foreach ($search as $key => $value) { foreach ($value as $keyi => $values) { 
+            foreach ($search as $key => $value) { 
                 echo str_contains($value['image'],'base');
             ?>
                 <div class="w-full px-4 md:w-1/2 lg:w-1/3">
@@ -33,8 +33,11 @@
                         </div>
                         <div>
                             <span class="mb-5 inline-block rounded bg-primary py-1 px-4 text-center text-xs font-semibold leading-loose text-white">
-                  Dec 22, 2023
-                </span>
+<?php $timestamp = strtotime($value['created_at']);
+
+// Format the date into a human-readable format
+
+echo date('l, F j, Y', $timestamp);?>                </span>
                             <h3>
                                 <a href="javascript:void(0)" class="mb-4 inline-block text-xl font-semibold text-dark hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
                                 <?= $value['username']?>                 </a>
@@ -50,7 +53,7 @@
                             </p>
                         </div>
                     </div>
-                </div><?php } }
+                </div><?php }
                 ?>
 
       

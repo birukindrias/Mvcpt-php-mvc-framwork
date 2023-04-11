@@ -8,7 +8,19 @@ class Request
     {
         $uri_REQ = $_SERVER['REQUEST_URI'];
         return strpos($uri_REQ, '?') ? substr($uri_REQ, 0, strpos($uri_REQ, '?')) : $uri_REQ;
-    }
+    }    
+/**
+ * redirect
+ *
+ * @param mixed location
+ *
+ * @return void
+ */
+
+    public function redirect($location)
+    {
+        
+        return header("location: $location") ;   }
     public function urlMethod()
     {
         $METHOD_REQ = $_SERVER['REQUEST_METHOD'];
@@ -68,7 +80,7 @@ class Request
             if ($file_size > 10) {
                 if (empty($errors) == true) {
                     $randNme = rand(0, 30000) . $file_name;
-                    move_uploaded_file($file_tmp, dirname(__DIR__) . '/storage/files/' . $path . '/' . $randNme);
+                    move_uploaded_file($file_tmp, dirname(__DIR__) . '/storage/' . $path . '/' . $randNme);
 
                     return $randNme;
                 } else {

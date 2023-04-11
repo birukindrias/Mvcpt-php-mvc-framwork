@@ -1,21 +1,24 @@
 <?php
 namespace App\App\Http\Controllers;
 
+use App\App\models\Posts;
 use App\App\models\Users;
 use App\config\App;
 use App\config\Controller;
+use App\config\Request;
+
 class PostsController extends Controller
 {
-    public function PostsController()
+    public function index()
     {
-       $title = "PostsController";
-       return $this->render("PostsController"); 
+       $title = "posts";
+       return $this->render("posts"); 
       
     }
   
     public  function create()
     {
-      return ;
+        return $this->render("pages/products/create");
 
     }
       public  function store()
@@ -23,13 +26,21 @@ class PostsController extends Controller
         if (App::$app->request->is_Post()) {
             // var_dump(App::$app->request->reqData());
             $data = App::$app->request->reqData();
-            $user = new Users();
+            $post = new Posts();
+      $imageName = App::$app->request->filePath('post_img','posts');
 
-            $user->loadData($data);
+            if ($imageName) {
+                $data['post_img'] = $imageName;
+              }
+              var_dump(  $data);
+            $post->loadData($data);
             // var_dump($data);
-            $user->validate();
-            $user->save();
-            return;
+          if (  $post->validate() && 
+          
+          $post->save()) {
+            echo "ya";
+            return App::$app->request->redirect('/');
+          }
         }
 
       
@@ -50,110 +61,3 @@ class PostsController extends Controller
 
     }
 }
-
-<?php
-namespace App\App\Http\Controllers;
-
-use App\App\models\Users;
-use App\config\App;
-use App\config\Controller;
-class PostsController extends Controller
-{
-    public function PostsController()
-    {
-       $title = "PostsController";
-       return $this->render("PostsController"); 
-      
-    }
-  
-    public  function create()
-    {
-      return ;
-
-    }
-      public  function store()
-    {
-        if (App::$app->request->is_Post()) {
-            // var_dump(App::$app->request->reqData());
-            $data = App::$app->request->reqData();
-            $user = new Users();
-
-            $user->loadData($data);
-            // var_dump($data);
-            $user->validate();
-            $user->save();
-            return;
-        }
-
-      
-    }
-    public  function update()
-    {
-      return ;
-
-    }
-    public  function edit()
-    {
-      return ;
-
-    }
-    public  function delete()
-    {
-      return ;
-
-    }
-}
-
-<?php
-namespace App\App\Http\Controllers;
-
-use App\App\models\Users;
-use App\config\App;
-use App\config\Controller;
-class PostsController extends Controller
-{
-    public function PostsController()
-    {
-       $title = "PostsController";
-       return $this->render("PostsController"); 
-      
-    }
-  
-    public  function create()
-    {
-      return ;
-
-    }
-      public  function store()
-    {
-        if (App::$app->request->is_Post()) {
-            // var_dump(App::$app->request->reqData());
-            $data = App::$app->request->reqData();
-            $user = new Users();
-
-            $user->loadData($data);
-            // var_dump($data);
-            $user->validate();
-            $user->save();
-            return;
-        }
-
-      
-    }
-    public  function update()
-    {
-      return ;
-
-    }
-    public  function edit()
-    {
-      return ;
-
-    }
-    public  function delete()
-    {
-      return ;
-
-    }
-}
-

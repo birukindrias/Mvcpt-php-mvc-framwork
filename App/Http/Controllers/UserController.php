@@ -37,13 +37,13 @@ class UserController extends Controller
     public  function serch_item()
     {
         if (App::$app->request->is_post()) {
-            $DATA = App::$app->request->reqData();
-            $USER = new Users();
-            $DATA['username'] = $DATA['search'];
-            unset ($DATA['search']);
-           $serach_result= $USER->search($DATA);
-       return $this->render('pages/users/search','ser',['search'=>$serach_result
-    ]); 
+            $data = App::$app->request->reqData();
+            $user = new Users();
+            $data['username'] = $data['search'];
+            unset($data['search']);
+            // var_dump($user->search($data));
+            
+       return $this->render('pages/users/search','ser',['search'=>$user->search($data)]); 
                 return false ;
         }
 

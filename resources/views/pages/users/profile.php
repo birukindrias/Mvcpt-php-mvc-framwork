@@ -1,5 +1,5 @@
 
-<body class="bg-blue-100 antialiased " style="background-image: url(<?=$this->image($user->image);?> );">
+<body class="bg-blue-100 antialiased " style="">
     <div class="container mx-auto my-32">
         <div>
 

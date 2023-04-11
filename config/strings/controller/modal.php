@@ -14,7 +14,7 @@ class ' . ucfirst($filename) . ' extends Model
     public function rules(): array
     {
         return [
-          "key"=>"val"
+          "' . $filename . '"=> [self::RULE_REQUIRED],
         ];
     }
     public function attrs(): array

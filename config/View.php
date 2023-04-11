@@ -9,25 +9,36 @@ class View
 {
     public string $layout = 'main';
     public string $title = 'index';
-    public function import_template($template_name, $keys)
+    public function import_template($template_name, $keys=[] )
     {
         
         foreach ($keys as $key => $value) {
             $$key = $value;
         }
+       
+        if (str_contains($template_name,'php')) {
         ob_start();
-        include_once dirname(__DIR__) . '/resources/components/'. $template_name . '.html';
+
+            include_once dirname(__DIR__) . '/resources/views/components/'. $template_name ;
+            echo ob_get_clean();
+
+        }else{
+            ob_start();
+
+            include_once dirname(__DIR__) . '/resources/views/components/'. $template_name. '.html' ;
         echo ob_get_clean();
 
+        }
+
     }
-    public function item($value, $name = 'text', $type = 'text', $pl = 'text' ,$action= '')
+    public function item($value, $name = 'text', $type = 'text', $pl = 'text' ,string $action = '' ?? '')
     {
         $pl = $pl ? $name : $pl;
         switch ($value) {
             case 'file':
                 echo '<div class="mb-6">   
   
-   <input name="file" type="file" placeholder="image" class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none" />
+   <input name="' . $name . '" type="file" placeholder="image" class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none" />
 </div>';
                 break;
             case 'button_':
@@ -50,6 +61,14 @@ class View
    </div>
 ';
                 break;
+            case 'hidden':
+                echo '
+                <div class="mb-6">   
+  
+   <input name="' . $name . '" type="hidden" value="' . $type . '" class="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none" />
+   </div>
+';
+                break;
             case 'forms':
                 echo '<section class="bg-[#F4F7FF] py-20 lg:py-[120px]">
                 <div class="container mx-auto">
@@ -62,7 +81,7 @@ class View
                                         <!-- <h3> Login </h3> -->
                                     </a>
                                 </div>
-                                <form action="' . $action . '" method="post" enctype="multipart/form-data">';
+                                <form action="' . $name . '" method="post" enctype="multipart/form-data">';
                 break;
             case 'formd':
                 echo '
